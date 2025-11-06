@@ -1,0 +1,137 @@
+/* 主题颜色变量定义 */
+
+/* 默认主题：浅蓝白色 */
+:root {
+    --theme-name: "浅蓝白";
+
+    /* 主色调 */
+    --primary-light: #ffffff;
+    --primary-mid: #dbeafe;
+    --primary-mid-dark: #bfdbfe;
+    --primary-dark: #93c5fd;
+    --primary-darker: #60a5fa;
+
+    /* 文字颜色 */
+    --text-primary: #1e40af;
+    --text-dark: #1e3a8a;
+    --text-accent: #3b82f6;
+
+    /* 背景颜色 */
+    --bg-gradient-start: #eff6ff;
+    --bg-gradient-mid: #ffffff;
+    --bg-gradient-end: #f0f9ff;
+
+    /* 阴影 */
+    --shadow-color: rgba(59, 130, 246, 0.15);
+    --shadow-hover: rgba(59, 130, 246, 0.2);
+}
+
+/* 深蓝主题 */
+[data-theme="deep-blue"] {
+    --theme-name: "深蓝";
+
+    --primary-light: #2563eb;
+    --primary-mid: #1d4ed8;
+    --primary-mid-dark: #1e40af;
+    --primary-dark: #0ea5e9;
+    --primary-darker: #0284c7;
+
+    --text-primary: #ffffff;
+    --text-dark: #ffffff;
+    --text-accent: #2563eb;
+
+    --bg-gradient-start: #f5f5f5;
+    --bg-gradient-mid: #ffffff;
+    --bg-gradient-end: #f5f5f5;
+
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --shadow-hover: rgba(37, 99, 235, 0.3);
+}
+
+/* 紫色主题 */
+[data-theme="purple"] {
+    --theme-name: "优雅紫";
+
+    --primary-light: #faf5ff;
+    --primary-mid: #e9d5ff;
+    --primary-mid-dark: #d8b4fe;
+    --primary-dark: #c084fc;
+    --primary-darker: #a855f7;
+
+    --text-primary: #6b21a8;
+    --text-dark: #581c87;
+    --text-accent: #9333ea;
+
+    --bg-gradient-start: #faf5ff;
+    --bg-gradient-mid: #ffffff;
+    --bg-gradient-end: #f3e8ff;
+
+    --shadow-color: rgba(147, 51, 234, 0.15);
+    --shadow-hover: rgba(147, 51, 234, 0.25);
+}
+
+/* 绿色主题 */
+[data-theme="green"] {
+    --theme-name: "清新绿";
+
+    --primary-light: #f0fdf4;
+    --primary-mid: #dcfce7;
+    --primary-mid-dark: #bbf7d0;
+    --primary-dark: #86efac;
+    --primary-darker: #4ade80;
+
+    --text-primary: #166534;
+    --text-dark: #14532d;
+    --text-accent: #22c55e;
+
+    --bg-gradient-start: #f0fdf4;
+    --bg-gradient-mid: #ffffff;
+    --bg-gradient-end: #ecfdf5;
+
+    --shadow-color: rgba(34, 197, 94, 0.15);
+    --shadow-hover: rgba(34, 197, 94, 0.25);
+}
+
+/* 玫瑰金主题 */
+[data-theme="rose"] {
+    --theme-name: "玫瑰金";
+
+    --primary-light: #fff1f2;
+    --primary-mid: #fecdd3;
+    --primary-mid-dark: #fda4af;
+    --primary-dark: #fb7185;
+    --primary-darker: #f43f5e;
+
+    --text-primary: #9f1239;
+    --text-dark: #881337;
+    --text-accent: #e11d48;
+
+    --bg-gradient-start: #fff1f2;
+    --bg-gradient-mid: #ffffff;
+    --bg-gradient-end: #ffe4e6;
+
+    --shadow-color: rgba(225, 29, 72, 0.15);
+    --shadow-hover: rgba(225, 29, 72, 0.25);
+}
+
+/* 暗色主题 */
+[data-theme="dark"] {
+    --theme-name: "暗夜";
+
+    --primary-light: #1e293b;
+    --primary-mid: #334155;
+    --primary-mid-dark: #475569;
+    --primary-dark: #64748b;
+    --primary-darker: #94a3b8;
+
+    --text-primary: #e2e8f0;
+    --text-dark: #f1f5f9;
+    --text-accent: #60a5fa;
+
+    --bg-gradient-start: #0f172a;
+    --bg-gradient-mid: #1e293b;
+    --bg-gradient-end: #0f172a;
+
+    --shadow-color: rgba(0, 0, 0, 0.3);
+    --shadow-hover: rgba(96, 165, 250, 0.2);
+}
