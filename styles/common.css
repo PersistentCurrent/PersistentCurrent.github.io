@@ -85,7 +85,7 @@ footer p {
     opacity: 0.8;
 }
 
-/* 主题切换按钮 */
+/* テーマ切替ボタン */
 .theme-toggle {
     background: rgba(255, 255, 255, 0.2);
     border: 1px solid var(--primary-mid-dark);
@@ -106,7 +106,7 @@ footer p {
     transform: translateY(-1px);
 }
 
-/* 主题切换面板 */
+/* テーマ切替パネル */
 .theme-panel {
     position: fixed;
     top: 0;
