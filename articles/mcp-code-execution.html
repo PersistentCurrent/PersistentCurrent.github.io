@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MCPによるコード実行：より効率的なエージェントの構築 - 私のブログ</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.8;
+            color: #333;
+            background: #f5f5f5;
+        }
+
+        nav {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        nav a:hover {
+            opacity: 0.8;
+        }
+
+        .article-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .article-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+
+        .article-meta {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            align-items: center;
+            font-size: 1rem;
+            opacity: 0.9;
+            flex-wrap: wrap;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        article {
+            background: white;
+            margin: 3rem auto;
+            padding: 3rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+
+        article h2 {
+            font-size: 1.8rem;
+            margin: 2.5rem 0 1rem 0;
+            color: #667eea;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        article h3 {
+            font-size: 1.4rem;
+            margin: 2rem 0 1rem 0;
+            color: #555;
+        }
+
+        article p {
+            margin-bottom: 1.2rem;
+            line-height: 1.8;
+            color: #444;
+        }
+
+        article ul, article ol {
+            margin: 1rem 0 1.5rem 2rem;
+            line-height: 1.8;
+        }
+
+        article li {
+            margin-bottom: 0.5rem;
+        }
+
+        article strong {
+            color: #667eea;
+            font-weight: 600;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin: 2rem 0;
+            padding: 0.8rem 1.5rem;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+
+        .back-link:hover {
+            background: #764ba2;
+            transform: translateY(-2px);
+        }
+
+        footer {
+            background: #2d3748;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 4rem;
+        }
+
+        footer p {
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+            .article-header h1 {
+                font-size: 1.8rem;
+            }
+
+            article {
+                padding: 2rem 1.5rem;
+            }
+
+            article h2 {
+                font-size: 1.5rem;
+            }
+
+            article h3 {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <h1>私のブログ</h1>
+            <ul>
+                <li><a href="../index.html#home">ホーム</a></li>
+                <li><a href="../index.html#blog">ブログ</a></li>
+                <li><a href="../index.html#about">自己紹介</a></li>
+                <li><a href="../index.html#contact">お問い合わせ</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="article-header">
+        <div class="container">
+            <h1>MCPによるコード実行：より効率的なエージェントの構築</h1>
+            <div class="article-meta">
+                <span>📅 2024年11月4日</span>
+                <span>✍️ Adam Jones & Conor Kelly</span>
+                <span>🔗 原文：<a href="https://www.anthropic.com/engineering/code-execution-with-mcp" style="color: white; text-decoration: underline;" target="_blank">Anthropic</a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <a href="../index.html#blog" class="back-link">← ブログ一覧に戻る</a>
+
+        <article>
+            <h2>はじめに</h2>
+            <p>Model Context Protocol（MCP）は、AIエージェントが外部システムに普遍的に接続できるようにします。2024年11月の立ち上げ以来、数千のコミュニティ構築サーバーによって急速に普及してきました。しかし、ツール接続を拡張することで、ツール定義や中間結果からの過度なトークン消費による非効率性が生じています。</p>
+
+            <h2>問題：トークン消費の課題</h2>
+
+            <h3>2つの主要な課題が浮上しています：</h3>
+
+            <p><strong>1. ツール定義がコンテキストを過負荷にする</strong> — ほとんどのMCPクライアントは、すべてのツール定義を事前にモデルのコンテキストウィンドウに読み込みます。数千のツールがある場合、エージェントはユーザーのリクエストを読む前に数十万トークンを処理する必要があります。</p>
+
+            <p><strong>2. 中間結果がトークンを消費する</strong> — エージェントがツール呼び出しを通じてデータを取得する際、結果はモデルのコンテキストを複数回通過します。2時間の会議の書き起こしでは、追加で50,000トークンが必要になる可能性があり、コンテキスト制限を超える恐れがあります。</p>
+
+            <h2>解決策：MCPによるコード実行</h2>
+
+            <p>直接的なツール呼び出しではなく、MCPサーバーをコードAPIとして提示することで、エージェントはツールと対話するコードを書くことができます。このアプローチには次のメリットがあります：</p>
+
+            <ul>
+                <li>必要なツール定義のみをオンデマンドで読み込む</li>
+                <li>実行環境でデータをフィルタリングおよび変換する</li>
+                <li>トークン使用量を150,000トークンから2,000トークンに削減（98.7%の削減）</li>
+            </ul>
+
+            <h2>実装例</h2>
+
+            <p>ツールは、各ツールを表すTypeScriptファイルを使用したファイルシステム構造として編成されます。エージェントはディレクトリ構造を探索して利用可能なサーバーを発見し、必要に応じて特定のツール定義を読み込みます。</p>
+
+            <h2>主なメリット</h2>
+
+            <p><strong>段階的開示：</strong> モデルは、すべてを事前に読み込むのではなく、ファイルシステムをナビゲートしてツール定義をオンデマンドでリクエストできます。</p>
+
+            <p><strong>コンテキスト効率的な結果：</strong> 大規模なデータセットは、モデルに要約を返す前にコード内でフィルタリングできます。</p>
+
+            <p><strong>強力な制御フロー：</strong> ループ、条件分岐、エラー処理は、ツール呼び出しを交互に行うのではなく、コード内で実行されます。</p>
+
+            <p><strong>プライバシーの保護：</strong> 中間結果はデフォルトで実行環境に残ります。機密データは自動的にトークン化でき、モデルへの露出を防ぎます。</p>
+
+            <p><strong>状態の永続性：</strong> エージェントは、ファイルシステムアクセスを通じて操作間で状態を維持でき、再利用可能なスキル機能を構築できます。</p>
+
+            <h2>重要な考慮事項</h2>
+
+            <p>コード実行には、安全なサンドボックス化、リソース制限、監視が必要です。これらのインフラストラクチャ要件により、運用上のオーバーヘッドとセキュリティ上の考慮事項が追加されますが、直接的なツール呼び出しではこれらを回避できます。メリットは実装コストと比較検討する必要があります。</p>
+
+            <h2>結論</h2>
+
+            <p>MCPによるコード実行は、確立されたソフトウェアエンジニアリングパターンをエージェントに適用し、効率的なツールの相互作用を可能にします。このアプローチにより、トークンコスト、レイテンシーが削減され、ツールの組み合わせが改善されます。</p>
+
+            <hr style="margin: 3rem 0; border: none; border-top: 1px solid #e0e0e0;">
+
+            <p style="font-size: 0.9rem; color: #666; font-style: italic;">この記事は、Anthropic社の技術ブログ記事を日本語に翻訳したものです。原文は<a href="https://www.anthropic.com/engineering/code-execution-with-mcp" target="_blank" style="color: #667eea;">こちら</a>でご覧いただけます。</p>
+        </article>
+
+        <a href="../index.html#blog" class="back-link">← ブログ一覧に戻る</a>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 私のブログ. All rights reserved.</p>
+    </footer>
+</body>
+</html>
