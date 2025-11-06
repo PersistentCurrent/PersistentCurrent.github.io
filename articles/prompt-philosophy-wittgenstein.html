@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>プロンプト哲学：言えないことについて - 私のブログ</title>
+    <link rel="stylesheet" href="../styles/themes.css">
     <link rel="stylesheet" href="../styles/common.css">
     <link rel="stylesheet" href="../styles/article.css">
 </head>
@@ -11,12 +12,17 @@
     <nav>
         <div class="container">
             <h1>私のブログ</h1>
-            <ul>
-                <li><a href="../index.html#home">ホーム</a></li>
-                <li><a href="../index.html#blog">ブログ</a></li>
-                <li><a href="../index.html#about">自己紹介</a></li>
-                <li><a href="../index.html#contact">お問い合わせ</a></li>
-            </ul>
+            <div class="nav-right">
+                <ul>
+                    <li><a href="../index.html#home">ホーム</a></li>
+                    <li><a href="../index.html#blog">ブログ</a></li>
+                    <li><a href="../index.html#about">自己紹介</a></li>
+                    <li><a href="../index.html#contact">お問い合わせ</a></li>
+                </ul>
+                <button id="theme-toggle" class="theme-toggle" aria-label="主题切换">
+                    🎨 <span id="theme-name">浅蓝白</span>
+                </button>
+            </div>
         </div>
     </nav>
 
@@ -176,5 +182,40 @@
     <footer>
         <p>&copy; 2025 私のブログ. All rights reserved.</p>
     </footer>
+
+    <!-- 主题切换面板 -->
+    <div id="theme-panel" class="theme-panel">
+        <div class="theme-panel-content">
+            <h3>选择主题</h3>
+            <div class="theme-options">
+                <button class="theme-option" data-theme="default">
+                    <div class="theme-preview theme-preview-default"></div>
+                    <span>浅蓝白</span>
+                </button>
+                <button class="theme-option" data-theme="deep-blue">
+                    <div class="theme-preview theme-preview-deep-blue"></div>
+                    <span>深蓝</span>
+                </button>
+                <button class="theme-option" data-theme="purple">
+                    <div class="theme-preview theme-preview-purple"></div>
+                    <span>优雅紫</span>
+                </button>
+                <button class="theme-option" data-theme="green">
+                    <div class="theme-preview theme-preview-green"></div>
+                    <span>清新绿</span>
+                </button>
+                <button class="theme-option" data-theme="rose">
+                    <div class="theme-preview theme-preview-rose"></div>
+                    <span>玫瑰金</span>
+                </button>
+                <button class="theme-option" data-theme="dark">
+                    <div class="theme-preview theme-preview-dark"></div>
+                    <span>暗夜</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../scripts/theme.js"></script>
 </body>
 </html>
