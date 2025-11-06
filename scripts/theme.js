@@ -1,20 +1,20 @@
-// 主题切换器
+// テーマ切替器
 (function() {
     const themeNames = {
-        'default': '浅蓝白',
-        'deep-blue': '深蓝',
-        'purple': '优雅紫',
-        'green': '清新绿',
-        'rose': '玫瑰金',
-        'dark': '暗夜'
+        'default': 'ライトブルー',
+        'deep-blue': 'ディープブルー',
+        'purple': 'エレガントパープル',
+        'green': 'フレッシュグリーン',
+        'rose': 'ローズゴールド',
+        'dark': 'ダーク'
     };
 
-    // 获取当前主题
+    // 現在のテーマを取得
     function getCurrentTheme() {
         return localStorage.getItem('theme') || 'default';
     }
 
-    // 设置主题
+    // テーマを設定
     function setTheme(theme) {
         if (theme === 'default') {
             document.documentElement.removeAttribute('data-theme');
@@ -23,17 +23,17 @@
         }
         localStorage.setItem('theme', theme);
 
-        // 更新主题名称显示
+        // テーマ名の表示を更新
         const themeNameElement = document.getElementById('theme-name');
         if (themeNameElement) {
             themeNameElement.textContent = themeNames[theme];
         }
 
-        // 更新激活状态
+        // アクティブ状態を更新
         updateActiveTheme(theme);
     }
 
-    // 更新主题选项的激活状态
+    // テーマオプションのアクティブ状態を更新
     function updateActiveTheme(theme) {
         const themeOptions = document.querySelectorAll('.theme-option');
         themeOptions.forEach(option => {
@@ -46,13 +46,13 @@
         });
     }
 
-    // 初始化
+    // 初期化
     document.addEventListener('DOMContentLoaded', function() {
-        // 应用保存的主题
+        // 保存されたテーマを適用
         const currentTheme = getCurrentTheme();
         setTheme(currentTheme);
 
-        // 主题切换按钮
+        // テーマ切替ボタン
         const themeToggle = document.getElementById('theme-toggle');
         const themePanel = document.getElementById('theme-panel');
 
@@ -61,7 +61,7 @@
                 themePanel.classList.add('active');
             });
 
-            // 点击面板外部关闭
+            // パネル外をクリックして閉じる
             themePanel.addEventListener('click', function(e) {
                 if (e.target === themePanel) {
                     themePanel.classList.remove('active');
@@ -69,14 +69,14 @@
             });
         }
 
-        // 主题选项点击
+        // テーマオプションのクリック
         const themeOptions = document.querySelectorAll('.theme-option');
         themeOptions.forEach(option => {
             option.addEventListener('click', function() {
                 const theme = this.getAttribute('data-theme');
                 setTheme(theme);
 
-                // 延迟关闭面板，让用户看到选择效果
+                // パネルを遅延して閉じて、ユーザーが選択効果を見られるようにする
                 setTimeout(() => {
                     if (themePanel) {
                         themePanel.classList.remove('active');
@@ -85,7 +85,7 @@
             });
         });
 
-        // ESC键关闭面板
+        // ESCキーでパネルを閉じる
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape' && themePanel) {
                 themePanel.classList.remove('active');
