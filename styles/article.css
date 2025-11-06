@@ -5,7 +5,7 @@ body {
 }
 
 .article-header {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #2563eb 0%, #0ea5e9 100%);
     color: white;
     padding: 4rem 2rem;
     text-align: center;
@@ -42,7 +42,7 @@ article {
 article h2 {
     font-size: 1.8rem;
     margin: 2.5rem 0 1rem 0;
-    color: #667eea;
+    color: #2563eb;
     padding-bottom: 0.5rem;
     border-bottom: 2px solid #f0f0f0;
 }
@@ -69,7 +69,7 @@ article li {
 }
 
 article strong {
-    color: #667eea;
+    color: #2563eb;
     font-weight: 600;
 }
 
@@ -95,7 +95,7 @@ article pre {
 }
 
 article a {
-    color: #667eea;
+    color: #2563eb;
     text-decoration: none;
 }
 
@@ -105,7 +105,7 @@ article a:hover {
 
 .quote {
     background: #f9f9f9;
-    border-left: 4px solid #667eea;
+    border-left: 4px solid #2563eb;
     padding: 1.5rem;
     margin: 2rem 0;
     font-style: italic;
@@ -116,7 +116,7 @@ article a:hover {
     display: inline-block;
     margin: 2rem 0;
     padding: 0.8rem 1.5rem;
-    background: #667eea;
+    background: #2563eb;
     color: white;
     text-decoration: none;
     border-radius: 8px;
@@ -124,7 +124,7 @@ article a:hover {
 }
 
 .back-link:hover {
-    background: #764ba2;
+    background: #1d4ed8;
     transform: translateY(-2px);
 }
 
